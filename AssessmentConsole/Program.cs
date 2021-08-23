@@ -9,13 +9,14 @@ namespace AssessmentConsole
             bool exit = false;
             App app = new App();
             while (!exit) {
+                Console.WriteLine("****************************************");
                 Console.WriteLine(@"
                 List paginator tool commands
                 1. Paginate
                 0. Exit
                 "
                 );
-                Console.WriteLine(">");
+                Console.Write(">> ");
                 string option = Console.ReadLine();
                 exit = app.ProcessOption(option);
             }

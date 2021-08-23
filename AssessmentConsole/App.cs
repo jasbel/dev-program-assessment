@@ -48,7 +48,7 @@ namespace AssessmentConsole
         private void NavigateData(string data, string option)
         {
             string pageSize = GetOption("Type the Page size");
-            IElementsProvider<string> provider = new StringProvider();
+            IElementsProvider<string> provider = new StringProvider(option);
             IPagination<string> pagination = new PaginationString(data, int.Parse(pageSize), provider);
             DoNavigation(pagination);
         }
@@ -58,8 +58,8 @@ namespace AssessmentConsole
             bool exit = false;
             while(!exit)
             {
-                Console.WriteLine("Current Page:" + pagination);
-                 string option = GetOption(
+                Console.WriteLine("Current Page : " + pagination.CurrentPage());
+                string option = GetOption(
                 @"Type: \n
                 1. First page
                 2. Next page
@@ -68,23 +68,28 @@ namespace AssessmentConsole
                 5. Go to page
                 0. Go Back
                 ");
-                if (option == "4") 
-                {
-                    pagination.LastPage();
-                } else if (option == "0")
-                {
-                    exit = true;
+
+                if (option == "5")  {
+                    Console.WriteLine();
+                    Console.Write("What is number page ? >> ");
+                    int otherPage = int.Parse(Console.ReadLine());
+                    pagination.GoToPage(otherPage);
                 }
+                else if (option == "1")  pagination.FirstPage();
+                else if (option == "2")  pagination.NextPage();
+                else if (option == "3")  pagination.PrevPage();
+                else if (option == "4")  pagination.LastPage();
+                else if (option == "0") exit = true;
+                
             }
     
         }
 
-        
-
         private string GetOption(string message)
         {
+            Console.WriteLine("****************************************");
             Console.WriteLine(message);
-            Console.Write("> ");
+            Console.Write(">> ");
             return Console.ReadLine();
         }
     }

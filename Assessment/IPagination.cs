@@ -4,11 +4,11 @@ namespace Assessment
 {
     public interface IPagination<T>
     {
-        /// <summary>Moves cursor to the previous page. It should return an InvalidOperationException 
+        /// <summary>Moves cursor to the previous page. It should return an InvalidOperationException
         /// when there is no previous page.</summary>
         void PrevPage();
 
-        /// <summary>Moves cursor to the next page. It should return an InvalidOperationException 
+        /// <summary>Moves cursor to the next page. It should return an InvalidOperationException
         /// when there is no next page.</summary>
         void NextPage();
 
@@ -18,7 +18,7 @@ namespace Assessment
         /// <summary>Moves cursor to the last page</summary>
         void LastPage();
 
-        /// <summary>Moves cursor directly to the specified page. It should return an InvalidOperationException 
+        /// <summary>Moves cursor directly to the specified page. It should return an InvalidOperationException
         /// when the page is not valid. Invalid values are: negative numbers, a value that exceeds the number of pages </summary>
         void GoToPage(int page);
 

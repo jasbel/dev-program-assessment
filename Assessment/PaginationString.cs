@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,22 +23,42 @@ namespace Assessment
 
         public void GoToPage(int page)
         {
-            throw new System.NotImplementedException();
+            currentPage = page;
+            Console.WriteLine("Go to page {0}", page);
         }
 
         public void LastPage()
         {
-            throw new System.NotImplementedException();
+            currentPage = pageSize - 1;
+            Console.WriteLine("Go to last page and is {0}", pageSize);
         }
 
         public void NextPage()
         {
-            
+            int nextPage = currentPage + 1;
+            if(nextPage == pageSize + 1)
+            {
+                throw new InvalidOperationException();
+            }
+            else
+            {
+                currentPage = nextPage;
+                Console.WriteLine("The next page is {0}", nextPage);
+            }
         }
 
         public void PrevPage()
         {
-            throw new System.NotImplementedException();
+            int prevPage = currentPage - 1;
+            if(prevPage == 0)
+            {
+                throw new InvalidOperationException();
+            }
+            else
+            {
+                currentPage = prevPage;
+                Console.WriteLine("The previous page is {0}", prevPage);
+            }
         }
 
         public IEnumerable<string> GetVisibleItems()
@@ -47,12 +68,14 @@ namespace Assessment
 
         public int CurrentPage()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Current page is {0}", currentPage);
+            return currentPage;
         }
 
         public int Pages()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Total pages are {0}", pageSize);
+            return pageSize;
         }
     }
 }

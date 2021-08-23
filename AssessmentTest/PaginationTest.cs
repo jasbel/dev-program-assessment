@@ -14,7 +14,7 @@ namespace AssessmentTest
         [TestMethod]
         public void TestFirstPage()
         {
-            IElementsProvider<string> provider = new StringProvider();
+            IElementsProvider<string> provider = new StringProvider(',');
             IPagination<string> pagination = new PaginationString(COMMA_SAMPLE, 5, provider);
             pagination.FirstPage();
             string [] expectedElements = {"a", "b", "c", "d", "e"};
@@ -24,7 +24,7 @@ namespace AssessmentTest
         [TestMethod]
         public void TestNextPage()
         {
-            IElementsProvider<string> provider = new StringProvider();
+            IElementsProvider<string> provider = new StringProvider(',');
             IPagination<string> pagination = new PaginationString(COMMA_SAMPLE, 5, provider);
             pagination.NextPage();
             string [] expectedElements = {"f", "g", "h", "i", "j"};
@@ -40,7 +40,7 @@ namespace AssessmentTest
         [TestMethod]
         public void TestLastPage()
         {
-            IElementsProvider<string> provider = new StringProvider();
+            IElementsProvider<string> provider = new StringProvider(',');
             IPagination<string> pagination = new PaginationString(COMMA_SAMPLE, 5, provider);
             pagination.LastPage();
             string [] expectedElements = {"v", "w", "x", "y", "z"};
@@ -50,7 +50,7 @@ namespace AssessmentTest
         [TestMethod]
         public void TestFirstPageWith10PageSize()
         {
-            IElementsProvider<string> provider = new StringProvider();
+            IElementsProvider<string> provider = new StringProvider(',');
             IPagination<string> pagination = new PaginationString(COMMA_SAMPLE, 10, provider);
             pagination.FirstPage();
             string [] expectedElements = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"};
@@ -70,7 +70,7 @@ namespace AssessmentTest
          [TestMethod]
         public void TestFirstPageWithPipeSample()
         {
-            IElementsProvider<string> provider = new StringProvider();
+            IElementsProvider<string> provider = new StringProvider('|');
             IPagination<string> pagination = new PaginationString(PIPE_SAMPLE, 5, provider);
             pagination.FirstPage();
             string [] expectedElements = {"a", "b", "c", "d", "e"};
@@ -86,7 +86,7 @@ namespace AssessmentTest
         [ExpectedException(typeof(InvalidOperationException), "Invalid page number.")]
         public void TestGoToPageException()
         {
-            IElementsProvider<string> provider = new StringProvider();
+            IElementsProvider<string> provider = new StringProvider(',');
             IPagination<string> pagination = new PaginationString(COMMA_SAMPLE, 5, provider);
             pagination.GoToPage(1000000);
         }

@@ -12,9 +12,9 @@ namespace Assessment
 
         public StringProvider(string option)
         {
-            if (option.Equals('1')) this.separatorOption = separatorComma;
-            else if (option.Equals('2')) this.separatorOption = separatorPipe;
-            else if (option.Equals('3')) this.separatorOption = separatorSpace;
+            if (string.Equals(option, "1")) this.separatorOption = separatorComma;
+            else if (string.Equals(option, "2")) this.separatorOption = separatorPipe;
+            else if (string.Equals(option, "3")) this.separatorOption = separatorSpace;
         }
 
         public IEnumerable<string> ProcessData(string source)

@@ -43,7 +43,8 @@ namespace AssessmentTest
             IElementsProvider<string> provider = new StringProvider("1");
             IPagination<string> pagination = new PaginationString(COMMA_SAMPLE, 5, provider);
             pagination.LastPage();
-            string [] expectedElements = {"v", "w", "x", "y", "z"};
+            // string [] expectedElements = {"v", "w", "x", "y", "z"};
+            string [] expectedElements = {"z"};
             CollectionAssert.AreEqual(expectedElements, pagination.GetVisibleItems().ToList());
         }
 

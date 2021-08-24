@@ -63,7 +63,12 @@ namespace Assessment
 
         public IEnumerable<string> GetVisibleItems()
         {
-            return data.Skip((currentPage - 1)*pageSize).Take(pageSize);
+            int newFirstData = (currentPage - 1)*pageSize;
+            if( newFirstData + pageSize > data.ToArray().Length) {
+                return data.Skip(newFirstData).Take(data.ToArray().Length - newFirstData);
+            } else {
+                return data.Skip(newFirstData).Take(pageSize);
+            }
         }
 
         public int CurrentPage()
